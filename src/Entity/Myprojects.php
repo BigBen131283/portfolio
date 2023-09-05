@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\MyprojectsRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: MyprojectsRepository::class)]
 class Myprojects
@@ -21,6 +22,10 @@ class Myprojects
 
     #[ORM\Column(length: 255)]
     private ?string $url = null;
+
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Merci de renseigner ce champ")]
+    private ?string $name = null;
 
     public function getId(): ?int
     {
@@ -59,6 +64,18 @@ class Myprojects
     public function setUrl(string $url): static
     {
         $this->url = $url;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): static
+    {
+        $this->name = $name;
 
         return $this;
     }
