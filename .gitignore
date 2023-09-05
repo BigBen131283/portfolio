@@ -20,5 +20,7 @@
 ###< symfony/phpunit-bridge ###
 
 ###< node modules >###
-/node_modules/
+/public/node_modules/
 ###< node modules >###
+
+.env.local
