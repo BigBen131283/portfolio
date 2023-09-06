@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AdminController extends AbstractController
 {
-    #[Route('/', name: 'home')]
+    #[Route('/admin', name: 'admin')]
     public function index(
         EntityManagerInterface $em,
         Request $request,
