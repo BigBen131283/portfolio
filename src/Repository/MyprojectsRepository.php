@@ -21,6 +21,15 @@ class MyprojectsRepository extends ServiceEntityRepository
         parent::__construct($registry, Myprojects::class);
     }
 
+    public function remove(Myprojects $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->remove($entity);
+
+        if($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
 //    /**
 //     * @return Myprojects[] Returns an array of Myprojects objects
 //     */

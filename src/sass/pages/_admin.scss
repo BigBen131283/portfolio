@@ -1,4 +1,25 @@
 @import '../base/reset';
 @import '../utils/variables';
+@import '../utils/mixins';
 @import '../base/typography';
 @import '../components/menu';
+
+main{
+    padding: 0 0 0 210px;
+
+    .instructions{
+        padding: 20px;
+    }
+
+    .projectlist{
+
+        li{
+            display: flex;
+
+            p{
+                display: block;
+                border: 1px solid black;
+            }
+        }
+    }
+}

@@ -1,0 +1,139 @@
+footer{
+    // background: $backgroundMain;
+    // color: $primaryText;
+    padding-bottom: 50px;
+    font-size: 1.7rem;
+
+    .footer-container{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin: -75px auto 0;
+        
+        @include for-desktop{
+            flex-direction: row;
+            justify-content: center;
+            max-width: 1100px;
+            margin: -100px auto 0;
+            padding: 0 20px;
+        }
+
+        .footer-form{
+            flex-basis: 60%;
+            // background: $backgroundMain;
+            // color: $secondaryText;
+            height: 350px;
+            padding: 30px;
+            
+            @include for-desktop{
+                padding: 70px;
+            }
+
+            .form-title{
+                font-size: 4rem;
+                margin-bottom: 75px;
+            }
+            
+            input{
+                border: none;
+                padding: 10px;
+                border-radius: 3px;
+                font-size: 1.8rem;
+                width: 100%;
+            }
+
+            button{
+                padding: 10px 5px;
+                border: none;
+                border-radius: 3px;
+                width: 100%;
+                margin-top: 10px;
+                // background: $backgroundMain;
+                // color: $secondaryText;
+                font-weight: 600;
+                font-size: 1.8rem;
+                cursor: pointer;
+                transition: all .2s;
+
+                &:hover{
+                    // background: $backgroundMain;
+                    // color: $primaryText;
+                }
+            }
+        }
+
+        .about-footer, .medias-footer, .footer-list{
+            min-height: auto;
+            width: 50%;
+            margin-left: 50px;
+
+            @include for-desktop{
+                min-height: 250px;
+                flex-direction: row;
+                margin-left: 0;
+            }
+
+            .footer-title{
+                font-size: 2.3rem;
+                padding-bottom: 10px;
+            }
+        }
+        
+        .footer-list, .medias-footer{
+            padding: 50px 0 0;
+            
+            @include for-desktop{
+                width: 33%;
+            }
+        }
+        
+        .footer-list{
+            
+            ul{
+
+                li{
+
+                    a{
+                        text-decoration: none;
+                        // color: $primaryText;
+                    }
+                }
+            }
+            
+        }
+
+        .about-footer{
+            padding: 40px 0 0;
+
+            @include for-desktop{
+                width: 40%;
+                padding: 110px 40px 0;
+            }
+            
+            .footer-txt{
+                line-height: 1.4;
+            }
+        }
+
+        .medias-footer{
+            display: flex;
+
+            a{
+                flex-shrink: 0;
+                display: block;
+                margin-right: 10px;
+                width: 50px;
+                height: 50px;
+                // background: $formBackground;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+
+                img{
+                    width: 30px;
+                }
+            }
+        }
+    }
+}

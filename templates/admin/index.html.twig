@@ -1,20 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdminController!{% endblock %}
+{% block title %}Big Ben Admin Page{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/myprojects/portfolio/src/Controller/AdminController.php'|file_link(0) }}">src/Controller/AdminController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/myprojects/portfolio/templates/admin/index.html.twig'|file_link(0) }}">templates/admin/index.html.twig</a></code></li>
-    </ul>
-</div>
+{% block link %}
+    <link rel="stylesheet" href="{{asset('/css/admin.css')}}">
+    <link rel="stylesheet" href="{{asset('/node_modules/bootstrap/dist/css/bootstrap.min.css')}}">
 {% endblock %}
+
+{% block script %}
+    <script src="{{asset('/node_modules/bootstrap/dist/js/bootstrap.min.js')}}" defer></script>
+    <script src="{{asset('/script/menu.js')}}" defer></script>
+{% endblock %}
+
+{% block nav %}
+
+    <div class="dropdown-container">
+        <a href="{{path('adminhome')}}" class="dropdown-link">Admin</a>
+        <div class="dropdown-content">
+            <a href="{{path('adminproject')}}">Ajouter un projet</a>
+            <a href="">Modifier mon CV</a>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block main %}
+
+    <main>
+        <div class="instructions">
+            <h1>Admin Page</h1>
+            <h2>Be careful !</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad, aperiam dolores minus nobis omnis commodi, excepturi alias, placeat voluptatem molestias eaque nihil. Est nesciunt molestiae doloremque nihil? Aliquam quidem quod voluptates alias tempora. Perspiciatis optio sed, quo minima architecto rem iusto ad reiciendis corrupti voluptate natus? Animi laboriosam nobis quisquam aut autem, natus, repellendus culpa perspiciatis impedit cum, aliquid ea et qui iste minus unde dolore aliquam! Culpa cumque placeat necessitatibus obcaecati quia cupiditate mollitia, inventore iure sint officiis consequatur fugiat commodi odio sequi autem eveniet deleniti. Asperiores ratione illum rem eveniet dicta molestiae repudiandae dolore incidunt velit, voluptate error fugit laboriosam recusandae minima! Perspiciatis fugiat quibusdam placeat dignissimos ad. Ab quaerat eos laudantium, illum aliquid rerum illo expedita doloremque? Ad nam modi debitis beatae molestiae laborum saepe cupiditate placeat architecto culpa expedita libero odit optio suscipit totam provident, dicta blanditiis? Delectus reprehenderit quas dolorum obcaecati? Obcaecati, quaerat. Reiciendis provident veniam ad impedit rerum, aliquam eaque, expedita doloremque, modi pariatur accusamus! Error, itaque saepe voluptatem, nesciunt et ipsum iusto modi quasi eos impedit repudiandae? Qui mollitia natus perferendis sapiente ab! Placeat, maxime odio reprehenderit mollitia molestias doloribus eos animi esse iusto, natus voluptate. In quaerat mollitia, minus eaque voluptates fugiat?</p>
+        </div>
+    </main>
+
+{% endblock %}
+

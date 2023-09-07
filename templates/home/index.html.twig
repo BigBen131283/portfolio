@@ -10,6 +10,15 @@
     <script src="{{asset('/script/home.js')}}" defer></script>
 {% endblock %}
 
+{% block nav %}
+    <a href="#skills">Mes compétences</a>
+    <a href="#achievements">Mes réalisations</a>
+    <a href="#fun">Fun</a>
+    <a href="">Mon CV</a>
+    <a href="#contact">Contact</a>
+    <a href="{{path('adminhome')}}">Admin</a>
+{% endblock %}
+
 {% block header %}
     <div class="hero-section">
         <p class="decor">&lsaquo;html&rsaquo;</p>
@@ -33,4 +42,49 @@
             <p class="decor">&lsaquo;/html&rsaquo;</p>
         </div>
     </div>
+{% endblock %}
+
+{% block footer %}
+        <footer>
+        <div class="footer-container">
+            <form action="" class="footer-form">
+                <p class="form-title">Newsletter</p>
+                <input type="email" placeholder="email">
+                <button type="button">Je m'abonne</button>
+            </form>
+
+            <div class="about-footer">
+                <p class="footer-title">A propos</p>
+                <div class="footer-txt">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni porro expedita molestias assumenda quisquam cupiditate debitis doloribus illo distinctio corrupti?</div>
+            </div>
+
+            <div class="footer-list">
+                <p class="footer-title">Catégories</p>
+                <ul>
+                    <li><a href="">Collection</a></li>
+                    <li><a href="">Cuisine</a></li>
+                    <li><a href="">Education nationale</a></li>
+                    <li><a href="">Chasse</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-list">
+                <p class="footer-title">Accès rapide</p>
+                <ul>
+                    <li><a href="#">A propos</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Nous contacter</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                </ul>
+            </div>
+
+            <div class="medias-footer">
+                <a href="https://www.facebook.com/bastien.toubhans"><img src="./src/images/facebook.svg" alt="fb icon"></a>
+                <a href="#"><img src="./src/images/twitter.svg" alt="twitter icon"></a>
+                <a href="#"><img src="./src/images/linkedin.svg" alt="linkedin icon"></a>
+            </div>
+
+        </div>
+    </footer>
 {% endblock %}

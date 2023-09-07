@@ -4,13 +4,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 13rem;
+    width: 210px;
     height: 100vh;
     position: fixed;
     
     .logo{
+        height: 210px;
         background: $backgroundLogo;
-        padding: 15px 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         position: absolute;
         top: 0;
         left: 0;
@@ -71,6 +75,41 @@
             }
             &:hover{
                 color: $hoverButton;
+            }
+        }
+
+        .dropdown-container{
+            width: 100%;
+            position: relative;
+
+            .dropdown-link{
+                position: absolute;
+                display: block;
+                width: 100%;
+
+                &::after{
+                    content: '';
+                    display: block;
+                    width: 100%;
+                    height: 1px;
+                    background: $menuLine;
+                }
+            }
+            .dropdown-content{
+                position: absolute;
+                display: none;
+                width: 100%;
+                background: $backgroundMenu;
+
+                a{
+                    border-left: 1px solid $menuLine;
+                    
+                }
+
+                &.active{
+                    display: block;
+                    transform: translateX(210px);
+                }
             }
         }
     }
