@@ -104,7 +104,8 @@ td, th {
         color: #08fdd8; }
     .menu nav .dropdown-container {
       width: 100%;
-      position: relative; }
+      position: relative;
+      height: 50px; }
       .menu nav .dropdown-container .dropdown-link {
         position: absolute;
         display: block;
