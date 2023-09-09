@@ -2,16 +2,46 @@ security:
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+        App\Entity\Users:
+            algorithm: auto
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
-        users_in_memory: { memory: null }
+        dbuser: 
+            entity:
+                class: App\Entity\User
+                property: email
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             lazy: true
-            provider: users_in_memory
+            provider: dbuser
+
+            form_login:
+            # where to redirect after login (deprecated doc 3.3)
+                login_path: app_login
+                check_path: app_login
+                default_target_path: adminhome
+                always_use_default_target_path: true
+            #     login_path: app_login
+            #     check_path: app_login
+                # enable_csrf: true
+            custom_authenticator: App\Security\LoginFormAuthenticator
+            
+            # configure the form authentication as the entry point for unauthenticated users
+            entry_point: form_login
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                target: home
+
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800
+                path: /
+                always_remember_me: true
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -22,7 +52,7 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:
