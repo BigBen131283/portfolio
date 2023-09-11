@@ -18,20 +18,11 @@ security:
         main:
             lazy: true
             provider: dbuser
-
-            form_login:
-            # where to redirect after login (deprecated doc 3.3)
-                login_path: app_login
-                check_path: app_login
-                default_target_path: adminhome
-                always_use_default_target_path: true
-            #     login_path: app_login
-            #     check_path: app_login
-                # enable_csrf: true
             custom_authenticator: App\Security\LoginFormAuthenticator
             
             # configure the form authentication as the entry point for unauthenticated users
-            entry_point: form_login
+            entry_point: App\Security\AuthenticationEntryPoint
+            access_denied_handler: App\Security\AccessDeniedHandler
             logout:
                 path: app_logout
                 # where to redirect after logout
@@ -51,9 +42,11 @@ security:
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
+    role_hierarchy:
+        ROLE_ADMIN: [ ROLE_USER ]
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        # - { path: ^/, roles: ROLE_USER }
 
 when@test:
     security:

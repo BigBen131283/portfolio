@@ -22,8 +22,8 @@ class User implements PasswordAuthenticatedUserInterface, UserInterface
     #[ORM\Column(length: 255)]
     private ?string $password = null;
 
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
-    private ?array $role = null;
+    #[ORM\Column(length: 32)]
+    private ?string $role = null;
 
     public function getId(): ?int
     {
@@ -54,12 +54,12 @@ class User implements PasswordAuthenticatedUserInterface, UserInterface
         return $this;
     }
 
-    public function getRole(): ?array
+    public function getRole(): ?string
     {
         return $this->role;
     }
 
-    public function setRole(?array $role): static
+    public function setRole(?string $role): static
     {
         $this->role = $role;
 
@@ -68,8 +68,8 @@ class User implements PasswordAuthenticatedUserInterface, UserInterface
 
     public function getRoles(): array
     {
-        return array('ROLE_ADMIN', 'TOTO');
-        // return $this->role;
+        // return array('ROLE_ADMIN', 'TOTO');
+        return array($this->role);
     }
     /**
      * @see UserInterface
