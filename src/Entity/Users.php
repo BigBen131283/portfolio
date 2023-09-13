@@ -35,10 +35,14 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Skills::class, inversedBy: 'users')]
     private Collection $skills;
 
+    #[ORM\OneToMany(mappedBy: 'users', targetEntity: UserSkills::class)]
+    private Collection $UserSkills;
+
     public function __construct()
     {
         $this->projects = new ArrayCollection();
         $this->skills = new ArrayCollection();
+        $this->UserSkills = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -161,6 +165,36 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeSkill(Skills $skill): static
     {
         $this->skills->removeElement($skill);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UserSkills>
+     */
+    public function getUserSkills(): Collection
+    {
+        return $this->UserSkills;
+    }
+
+    public function addUserSkill(UserSkills $userSkill): static
+    {
+        if (!$this->UserSkills->contains($userSkill)) {
+            $this->UserSkills->add($userSkill);
+            $userSkill->setUsers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserSkill(UserSkills $userSkill): static
+    {
+        if ($this->UserSkills->removeElement($userSkill)) {
+            // set the owning side to null (unless already changed)
+            if ($userSkill->getUsers() === $this) {
+                $userSkill->setUsers(null);
+            }
+        }
 
         return $this;
     }
