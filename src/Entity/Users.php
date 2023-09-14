@@ -32,7 +32,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'users', targetEntity: Projects::class)]
     private Collection $projects;
 
-    #[ORM\ManyToMany(targetEntity: Skills::class, inversedBy: 'users')]
+    #[ORM\ManyToMany(targetEntity: Skills::class, inversedBy: 'users', cascade:['persist', 'remove'], fetch: "EAGER")]
     private Collection $skills;
 
     public function __construct()

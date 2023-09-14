@@ -19,13 +19,10 @@ class Skills
     #[ORM\Column(length: 255)]
     private ?string $language = null;
 
-    #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $mastery = null;
-
     #[ORM\Column(length: 255)]
     private ?string $logo = null;
 
-    #[ORM\ManyToMany(targetEntity: Users::class, mappedBy: 'skills')]
+    #[ORM\ManyToMany(targetEntity: Users::class, mappedBy: 'skills', cascade:['persist', 'remove'], fetch: "EAGER")]
     private Collection $users;
 
     public function __construct()
@@ -46,18 +43,6 @@ class Skills
     public function setLanguage(string $language): static
     {
         $this->language = $language;
-
-        return $this;
-    }
-
-    public function getMastery(): ?int
-    {
-        return $this->mastery;
-    }
-
-    public function setMastery(int $mastery): static
-    {
-        $this->mastery = $mastery;
 
         return $this;
     }
