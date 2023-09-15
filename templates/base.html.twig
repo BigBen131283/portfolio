@@ -37,10 +37,14 @@
                 <p>Web Developer</p>
             </div>
             
-            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavaccordion">
-                <a href="{{path('home')}}">Accueil</a>
-                {% block nav %}{% endblock %}
-
+            <nav>
+                <a href="{{ path('home') }}">Accueil</a>
+                <a href="#skills">Mes compétences</a>
+                <a href="#achievements">Mes réalisations</a>
+                <a href="#fun">Fun</a>
+                <a href="">Mon CV</a>
+                <a href="#contact">Contact</a>
+                <a href="{{ path('admin') }}">Admin</a>
             </nav>
             <div class="social-networks">
             </div>
