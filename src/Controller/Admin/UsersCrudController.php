@@ -24,11 +24,11 @@ class UsersCrudController extends AbstractCrudController
             TextField::new('email'),
             TextField::new('password'),
             AssociationField::new('skills')
+                ->onlyOnForms()
                 ->setCrudController(SkillsCrudController::class),
             CollectionField::new('skills')
+                ->onlyOnIndex(),
+            CollectionField::new('roles')
         ];
-    }
-
-
-    
+    }    
 }

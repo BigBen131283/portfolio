@@ -29,8 +29,13 @@ class ProjectsCrudController extends AbstractCrudController
             TextareaField::new('description')
                 ->setMaxLength(255),
             ImageField::new('image')
+                ->onlyOnIndex(),
+            ImageField::new('image')
                 ->setUploadDir('public/images/projets')
                 ->onlyWhenCreating(),
+            ImageField::new('image')
+                ->setUploadDir('public/images/projets')
+                ->onlyWhenUpdating(),
             // DateTimeField::new('createdAt'),
             DateTimeField::new('createdAt')
                 ->onlyWhenCreating(),
