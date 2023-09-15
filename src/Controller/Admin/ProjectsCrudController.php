@@ -4,6 +4,13 @@ namespace App\Controller\Admin;
 
 use App\Entity\Projects;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 
 class ProjectsCrudController extends AbstractCrudController
 {
@@ -12,14 +19,25 @@ class ProjectsCrudController extends AbstractCrudController
         return Projects::class;
     }
 
-    /*
+    
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            // IdField::new('id'),
+            TextField::new('name'),
+            UrlField::new('url'),
+            TextareaField::new('description')
+                ->setMaxLength(255),
+            ImageField::new('image')
+                ->setUploadDir('public/images/projets')
+                ->onlyWhenCreating(),
+            // DateTimeField::new('createdAt'),
+            DateTimeField::new('createdAt')
+                ->onlyWhenCreating(),
+            // DateTimeField::new('updatedAt'),
+            DateTimeField::new('updatedAt')
+                ->onlyWhenUpdating()
         ];
     }
-    */
+    
 }
